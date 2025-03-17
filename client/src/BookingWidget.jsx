@@ -12,6 +12,20 @@ export default function BookingWidget({place}) {
   const [phone,setPhone] = useState('');
   const [redirect,setRedirect] = useState('');
   const {user} = useContext(UserContext);
+  import API_BASE_URL from "../config"; // Import the backend URL
+
+useEffect(() => {
+    if (id) {
+        axios.get(`${API_BASE_URL}/bookings`) // Use the full URL
+            .then(response => {
+                const foundBooking = response.data.find(({ _id }) => _id === id);
+                if (foundBooking) {
+                    setBooking(foundBooking);
+                }
+            })
+            .catch(error => console.error("Error fetching booking:", error));
+    }
+}, [id]);
 
   useEffect(() => {
     if (user) {
@@ -25,7 +39,7 @@ export default function BookingWidget({place}) {
   }
 
   async function bookThisPlace() {
-    const response = await axios.post('/bookings', {
+    const response = await axios.post('${API_BASE_URL}/bookings', {
       checkIn,checkOut,numberOfGuests,name,phone,
       place:place._id,
       price:numberOfNights * place.price,
