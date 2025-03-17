@@ -1,7 +1,7 @@
 import axios from "axios";
 import {useState} from "react";
 import Image from "./Image.jsx";
-import API_BASE_URL from "../config"; // Import the backend URL
+import API_BASE_URL from "./config"; // Import the backend URL
 export default function PhotosUploader({addedPhotos,onChange}) {
   const [photoLink,setPhotoLink] = useState('');
   async function addPhotoByLink(ev) {
