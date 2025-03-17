@@ -2,11 +2,11 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
 import Image from "../Image.jsx";
-
+import API_BASE_URL from "../config"; // Import the backend URL
 export default function IndexPage() {
   const [places,setPlaces] = useState([]);
   useEffect(() => {
-    axios.get('/places').then(response => {
+    axios.get('${API_BASE_URL}/places').then(response => {
       setPlaces(response.data);
     });
   }, []);
