@@ -4,20 +4,23 @@ import axios from "axios";
 import AddressLink from "../AddressLink";
 import PlaceGallery from "../PlaceGallery";
 import BookingDates from "../BookingDates";
-
+import API_BASE_URL from "../config"; // Import the backend URL
 export default function BookingPage() {
   const {id} = useParams();
   const [booking,setBooking] = useState(null);
+  
   useEffect(() => {
     if (id) {
-      axios.get('/bookings').then(response => {
-        const foundBooking = response.data.find(({_id}) => _id === id);
-        if (foundBooking) {
-          setBooking(foundBooking);
-        }
-      });
+        axios.get(`${API_BASE_URL}/bookings`) // Use the full URL
+            .then(response => {
+                const foundBooking = response.data.find(({ _id }) => _id === id);
+                if (foundBooking) {
+                    setBooking(foundBooking);
+                }
+            })
+            .catch(error => console.error("Error fetching booking:", error));
     }
-  }, [id]);
+}, [id]);
 
   if (!booking) {
     return '';
