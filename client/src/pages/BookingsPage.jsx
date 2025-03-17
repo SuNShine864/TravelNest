@@ -5,11 +5,11 @@ import PlaceImg from "../PlaceImg";
 import {differenceInCalendarDays, format} from "date-fns";
 import {Link} from "react-router-dom";
 import BookingDates from "../BookingDates";
-
+import API_BASE_URL from "../config"; // Import the backend URL
 export default function BookingsPage() {
   const [bookings,setBookings] = useState([]);
   useEffect(() => {
-    axios.get('/bookings').then(response => {
+    axios.get(`${API_BASE_URL}/bookings`).then(response => {
       setBookings(response.data);
     });
   }, []);
