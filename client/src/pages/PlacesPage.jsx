@@ -3,10 +3,11 @@ import AccountNav from "../AccountNav";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import PlaceImg from "../PlaceImg";
+import API_BASE_URL from "../config"; // Import the backend URL
 export default function PlacesPage() {
   const [places,setPlaces] = useState([]);
   useEffect(() => {
-    axios.get('/user-places').then(({data}) => {
+    axios.get('${API_BASE_URL}/user-places').then(({data}) => {
       setPlaces(data);
     });
   }, []);
