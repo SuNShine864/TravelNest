@@ -12,7 +12,7 @@ export default function BookingWidget({place}) {
   const [phone,setPhone] = useState('');
   const [redirect,setRedirect] = useState('');
   const {user} = useContext(UserContext);
-  import API_BASE_URL from "../config"; // Import the backend URL
+  import API_BASE_URL from "./config"; // Import the backend URL
 
 useEffect(() => {
     if (id) {
