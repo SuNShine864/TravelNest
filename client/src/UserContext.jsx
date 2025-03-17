@@ -1,7 +1,7 @@
 import {createContext, useEffect, useState} from "react";
 import axios from "axios";
 import {data} from "autoprefixer";
-import API_BASE_URL from "../config"; // Import the backend URL
+import API_BASE_URL from "./config"; // Import the backend URL
 export const UserContext = createContext({});
 
 export function UserContextProvider({children}) {
