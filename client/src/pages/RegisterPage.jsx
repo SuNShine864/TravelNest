@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 import {useState} from "react";
 import axios from "axios";
-
+import API_BASE_URL from "../config"; // Import the backend URL
 export default function RegisterPage() {
   const [name,setName] = useState('');
   const [email,setEmail] = useState('');
@@ -9,7 +9,7 @@ export default function RegisterPage() {
   async function registerUser(ev) {
     ev.preventDefault();
     try {
-      await axios.post('/register', {
+      await axios.post('${API_BASE_URL}/register', {
         name,
         email,
         password,
