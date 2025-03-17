@@ -1,7 +1,7 @@
 import {createContext, useEffect, useState} from "react";
 import axios from "axios";
 import {data} from "autoprefixer";
-
+import API_BASE_URL from "../config"; // Import the backend URL
 export const UserContext = createContext({});
 
 export function UserContextProvider({children}) {
@@ -9,7 +9,7 @@ export function UserContextProvider({children}) {
   const [ready,setReady] = useState(false);
   useEffect(() => {
     if (!user) {
-      axios.get('/profile').then(({data}) => {
+      axios.get('${API_BASE_URL}/profile').then(({data}) => {
         setUser(data);
         setReady(true);
       });
