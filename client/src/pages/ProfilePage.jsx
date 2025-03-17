@@ -4,7 +4,7 @@ import {Link, Navigate, useParams} from "react-router-dom";
 import axios from "axios";
 import PlacesPage from "./PlacesPage";
 import AccountNav from "../AccountNav";
-
+import API_BASE_URL from "../config"; // Import the backend URL
 export default function ProfilePage() {
   const [redirect,setRedirect] = useState(null);
   const {ready,user,setUser} = useContext(UserContext);
@@ -14,7 +14,7 @@ export default function ProfilePage() {
   }
 
   async function logout() {
-    await axios.post('/logout');
+    await axios.post('${API_BASE_URL}/logout');
     setRedirect('/');
     setUser(null);
   }
