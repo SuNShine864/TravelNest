@@ -64,13 +64,13 @@ export default function PlacesFormPage() {
     };
     if (id) {
       // update
-      await axios.put('/places', {
+      await axios.put('${API_BASE_URL}/places', {
         id, ...placeData
       });
       setRedirect(true);
     } else {
       // new place
-      await axios.post('/places', placeData);
+      await axios.post('${API_BASE_URL}/places', placeData);
       setRedirect(true);
     }
 
