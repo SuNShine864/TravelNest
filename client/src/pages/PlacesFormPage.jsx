@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import AccountNav from "../AccountNav";
 import {Navigate, useParams} from "react-router-dom";
-
+import API_BASE_URL from "../config"; // Import the backend URL
 export default function PlacesFormPage() {
   const {id} = useParams();
   const [title,setTitle] = useState('');
@@ -22,7 +22,7 @@ export default function PlacesFormPage() {
     if (!id) {
       return;
     }
-    axios.get('/places/'+id).then(response => {
+    axios.get('${API_BASE_URL}/places/'+id).then(response => {
        const {data} = response;
        setTitle(data.title);
        setAddress(data.address);
