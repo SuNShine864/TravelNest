@@ -2,7 +2,7 @@ import {Link, Navigate} from "react-router-dom";
 import {useContext, useState} from "react";
 import axios from "axios";
 import {UserContext} from "../UserContext.jsx";
-
+import API_BASE_URL from "../config"; // Import the backend URL
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -11,7 +11,7 @@ export default function LoginPage() {
   async function handleLoginSubmit(ev) {
     ev.preventDefault();
     try {
-      const {data} = await axios.post('/login', {email,password});
+      const {data} = await axios.post('${API_BASE_URL}/login', {email,password});
       setUser(data);
       alert('Login successful');
       setRedirect(true);
