@@ -66,7 +66,7 @@ app.get('/api/test', (req,res) => {
 app.post('/api/register', async (req,res) => {
   mongoose.connect(process.env.MONGO_URL);
   const {name,email,password} = req.body;
-
+  console.log("Incoming registration request:", req.body);  // Log request data
   try {
     const userDoc = await User.create({
       name,
